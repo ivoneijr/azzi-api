@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client'
+import { PackageType, PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
@@ -36,7 +36,7 @@ async function seed() {
   const serviceProvider = await prisma.serviceProvider.create({
     data: {
       slug: 'provider-1',
-      location: 'New York',
+      location: '-73.935242,40.730610',
       isActive: true,
       user: {
         connect: { id: user1.id },
@@ -44,14 +44,16 @@ async function seed() {
       packages: {
         create: [
           {
-            title: 'Basic Package',
+            title: 'Azzi - SemiPro',
             price: 100.0,
             quantity: 10,
+            type: PackageType.SEMI_PROFESSIONAL,
           },
           {
-            title: 'Premium Package',
+            title: 'Azzi - Pro',
             price: 200.0,
             quantity: 5,
+            type: PackageType.PROFESSIONAL,
           },
         ],
       },

@@ -74,8 +74,16 @@ model Package {
   title    String
   price    Float
   quantity Int
+  type     PackageType
 
   @@map("packages")
+}
+
+enum PackageType {
+  PROFESSIONAL
+  SEMI_PROFESSIONAL
+  ENTHUSIAST
+  BYOD
 }
 
 model PhotoSession {
