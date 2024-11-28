@@ -1,0 +1,30 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "biomejs.biome",
+  "notebook.defaultFormatter": "biomejs.biome",
+
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "window.commandCenter": true,
+  "terminal.integrated.env.osx": {},
+  "symbols.hidesExplorerArrows": false,
+  "console-ninja.featureSet": "Community",
+  "highlightLine.borderStyle": "outset",
+  "highlightLine.borderColor": "#54b3d6",
+  "git.autofetch": true,
+  "cursor.chat.showSuggestedFiles": true,
+  "editor.tabSize": 2,
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+}

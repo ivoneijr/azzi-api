@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json.schemastore.org/biome.json",
+  "linter": {
+    "rules": {
+      "suspicious": {
+        "noExplicitAny": "off"
+      }
+    }
+  },
+  "files": {
+    "ignore": ["./src/metadata.ts"]
+  },
+  "overrides": [
+    {
+      "include": ["./src/emails/**/*.tsx"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noUnusedImports": "off"
+          }
+        }
+      }
+    }
+  ]
+}
