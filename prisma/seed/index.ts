@@ -36,7 +36,7 @@ async function seed() {
   const serviceProvider = await prisma.serviceProvider.create({
     data: {
       slug: 'provider-1',
-      location: '-73.935242,40.730610',
+      location: '-30.061377465367894, -51.22703026140122',
       isActive: true,
       user: {
         connect: { id: user1.id },

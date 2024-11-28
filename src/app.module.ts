@@ -12,6 +12,7 @@ import { StatusModule } from './status/status.module';
 
 import { UsersModule } from '@features/users/users.module';
 import { ServiceProvidersModule } from '@features/service-providers/service-providers.module';
+import { PackagesModule } from '@features/packages/packages.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { ServiceProvidersModule } from '@features/service-providers/service-prov
     StatusModule,
     UsersModule,
     ServiceProvidersModule,
+    PackagesModule,
   ],
   controllers: [],
   providers: [
@@ -36,6 +38,7 @@ import { ServiceProvidersModule } from '@features/service-providers/service-prov
     StatusModule,
     UsersModule,
     ServiceProvidersModule,
+    PackagesModule,
   ],
 })
 

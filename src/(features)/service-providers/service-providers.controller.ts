@@ -12,4 +12,8 @@ export class ServiceProvidersController {
     return this.serviceProvidersService.all();
   }
 
+  @Get('/available')
+  available() {
+    return this.serviceProvidersService.available();
+  }
 }

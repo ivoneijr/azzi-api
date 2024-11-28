@@ -14,16 +14,45 @@ export class ServiceProvidersService {
 
   async all() {
     const serviceProviders = await this.prisma.serviceProvider.findMany({
-      include: {
+      select: {
+        id: true,
+        slug: true,
+        location: true,
+        isActive: true,
         user: {
-          include: {
-            profile: true,
+          select: {
+            id: true,
+            profile: {
+              select: {
+                name: true,
+                avatarUrl: true,
+              }
+            },
           }
         },
-        packages: true,
-      }
+        packages: {
+          select: {
+            id: true,
+            title: true,
+            price: true,
+            quantity: true,
+            type: true,
+          }
+        },
+      },
     })
 
     return serviceProviders
+  }
+
+  async available() {
+    const serviceProviders = await this.prisma.serviceProvider.findMany({
+      select: {
+        location: true,
+      },
+      where: { isActive: true },
+    })
+
+    return serviceProviders.map(provider => provider.location)
   }
 }

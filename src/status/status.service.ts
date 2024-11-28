@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class StatusService {
   hello() {
-    return 'hello world'
+    return 'up and running (='
   }
 
   config() {
