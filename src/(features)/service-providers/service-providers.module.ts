@@ -2,8 +2,8 @@ import { forwardRef, Module } from '@nestjs/common';
 
 import { PrismaModule } from 'src/(shared)/prisma/prisma.module';
 
-import { ExpensesService } from './expenses.service';
-import { ExpensesController } from './expenses.controller';
+import { ServiceProvidersService } from './service-providers.service';
+import { ServiceProvidersController } from './service-providers.controller';
 // import { AuthModule } from '@features/auth/auth.module';
 // import { AuthGuard } from '@features/auth/auth.guard';
 
@@ -12,8 +12,8 @@ import { ExpensesController } from './expenses.controller';
     PrismaModule,
     // forwardRef(() => AuthModule),
   ],
-  controllers: [ExpensesController],
-  providers: [ExpensesService],
-  exports: [ExpensesService]
+  controllers: [ServiceProvidersController],
+  providers: [ServiceProvidersService],
+  exports: [ServiceProvidersService]
 })
-export class ExpensesModule { }
+export class ServiceProvidersModule { }

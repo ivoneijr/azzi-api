@@ -16,7 +16,7 @@ datasource db {
 enum UserRole {
   ADMIN
   USER
-  SERVICE_PROVIDER
+  PROFESSIONAL
 }
 
 model User {
@@ -29,21 +29,87 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  profile Profile?
+  profile         Profile?
+  ServiceProvider ServiceProvider?
+  PhotoSession    PhotoSession[]
 
   @@map("users")
 }
 
 model Profile {
-  id     String @id @default(cuid())
-  userId String @unique
-  user   User   @relation(fields: [userId], references: [id])
-
+  id        String  @id @default(cuid())
   name      String
   avatarUrl String?
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@map("profiles")
+}
+
+model ServiceProvider {
+  id       String  @id @default(cuid())
+  slug     String  @unique
+  location String
+  isActive Boolean @default(false)
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
+
+  packages      Package[]
+  photoSessions PhotoSession[]
+  portfolio     Portfolio?
+
+  @@map("service_providers")
+}
+
+model Package {
+  id                String          @id @default(cuid())
+  serviceProviderId String
+  serviceProvider   ServiceProvider @relation(fields: [serviceProviderId], references: [id])
+
+  title    String
+  price    Float
+  quantity Int
+
+  @@map("packages")
+}
+
+model PhotoSession {
+  id                String          @id @default(cuid())
+  serviceProviderId String
+  serviceProvider   ServiceProvider @relation(fields: [serviceProviderId], references: [id])
+
+  clientId String
+  client   User   @relation(fields: [clientId], references: [id])
+
+  files File[]
+
+  @@map("photo_sessions")
+}
+
+model File {
+  id  String @id @default(cuid())
+  url String
+
+  photoSessionId String?
+  photoSession   PhotoSession? @relation(fields: [photoSessionId], references: [id])
+
+  portfolioId String?
+  portfolio   Portfolio? @relation(fields: [portfolioId], references: [id])
+
+  @@map("files")
+}
+
+model Portfolio {
+  id                String          @id @default(cuid())
+  serviceProviderId String          @unique
+  serviceProvider   ServiceProvider @relation(fields: [serviceProviderId], references: [id])
+
+  files File[]
+
+  @@map("portfolios")
 }

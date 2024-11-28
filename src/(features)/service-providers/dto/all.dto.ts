@@ -1,7 +1,7 @@
 import { Transform } from 'class-transformer';
 import { IsNumber, Min, Max, IsOptional } from 'class-validator';
 
-export class AllDTO {
+export class AllQueryDto {
   @IsNumber()
   @Min(2000)
   @Max(2500)

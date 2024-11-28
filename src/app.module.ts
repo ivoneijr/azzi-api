@@ -11,7 +11,7 @@ import { PrismaService } from '@shared/prisma/prisma.service'
 import { StatusModule } from './status/status.module';
 
 import { UsersModule } from '@features/users/users.module';
-import { ExpensesModule } from '@features/expenses/expenses.module';
+import { ServiceProvidersModule } from '@features/service-providers/service-providers.module';
 
 @Module({
   imports: [
@@ -26,7 +26,7 @@ import { ExpensesModule } from '@features/expenses/expenses.module';
 
     StatusModule,
     UsersModule,
-    ExpensesModule,
+    ServiceProvidersModule,
   ],
   controllers: [],
   providers: [
@@ -35,7 +35,7 @@ import { ExpensesModule } from '@features/expenses/expenses.module';
 
     StatusModule,
     UsersModule,
-    ExpensesModule,
+    ServiceProvidersModule,
   ],
 })
 
