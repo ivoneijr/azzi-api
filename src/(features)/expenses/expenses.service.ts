@@ -4,7 +4,6 @@ import { ConfigService } from '@nestjs/config';
 import { PrismaService } from 'src/(shared)/prisma/prisma.service';
 
 import { AllDTO } from './dto/all.dto';
-import { UpdateDTO } from './dto/update.dto';
 
 @Injectable()
 export class ExpensesService {
