@@ -48,11 +48,24 @@ export class ServiceProvidersService {
   async available() {
     const serviceProviders = await this.prisma.serviceProvider.findMany({
       select: {
+        id: true,
         location: true,
       },
       where: { isActive: true },
     })
 
-    return serviceProviders.map(provider => provider.location)
+    const markers = serviceProviders.map(provider => {
+      const latitude = provider.location.split(',')[0].trim()
+      const longitude = provider.location.split(',')[1].trim()
+
+      return {
+        id: provider.id,
+        location: provider.location,
+        latitude,
+        longitude,
+      }
+    })
+
+    return markers
   }
 }
